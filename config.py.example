@@ -1,0 +1,6 @@
+LDAP_SERVER='ldap://2.2.2.2:389'
+LDAP_BASE='dc=www,dc=google,dc=com'
+LDAP_USER='uid=?,ou=!,dc=www,dc=google,dc=com'
+LDAP_PASSWORD='google-dont-be-evil?'
+
+SALT=b"as-loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong-as-you-can"
