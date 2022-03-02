@@ -71,7 +71,7 @@ class Sign extends React.Component {
                 options.push(key);
         }
         formData.append('options', options);
-        axios.post('/sign', formData).then(res => {
+        axios.post('/api/sign', formData).then(res => {
             if (res.data.status === 'ok') {
                 this.setState({
                     error: false,

@@ -44,7 +44,7 @@ class Verify extends React.Component {
         this.setState({ loading: true });
         var formData = new FormData();
         formData.append('sign', this.sign.value);
-        axios.post('/verify', formData).then(res => {
+        axios.post('/api/verify', formData).then(res => {
             if (res.data.status === 'ok') {
                 this.setState({
                     data: res.data.data,

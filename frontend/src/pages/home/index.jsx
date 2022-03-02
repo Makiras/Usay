@@ -40,7 +40,7 @@ class Home extends React.Component {
         <main>
           <div className="cards">
             <Stack spacing={2}>
-              <NaviCard title="进行发言" description="有选择地公布你的身份信息并发言" button="说" link="/about" />
+              <NaviCard title="进行发言" description="有选择地公布你的身份信息并发言" button="说" link="/sign" />
               <NaviCard title="来查成分" description="看看别人的发言和公布的认证身份" button="查" link="/verify" />
               <NaviCard title="如何使用" description="阅读教程，了解这个系统如何工作" button="看" link="/about" />
             </Stack>
