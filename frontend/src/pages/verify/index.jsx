@@ -63,6 +63,11 @@ class Verify extends React.Component {
                     error: true,
                     message: err.response.data.message,
                 });
+            } else {
+                this.setState({
+                    error: true,
+                    message: err.message,
+                });
             }
         });
         this.setState({

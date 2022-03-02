@@ -23,8 +23,8 @@ class Sign extends React.Component {
         this.storage = window.localStorage;
         this.username = this.storage.getItem('username') || '';
         this.password = this.storage.getItem('password') || '';
-        this.ref_username = React.createRef();
-        this.ref_password = React.createRef();
+        this.ref_username = null;
+        this.ref_password = null;
         this.options = {
             'name': false,
             'gender': false,
@@ -43,8 +43,8 @@ class Sign extends React.Component {
     }
 
     getData() {
-        this.username = this.ref_username.value || this.username;
-        this.password = this.ref_password.value || this.password;
+        this.username = this.username === '' ? this.ref_username.value : this.username;
+        this.password = this.password === '' ? this.ref_password.value : this.password;
         this.comment = this.comment === null ? '' : this.comment.value;
         if (this.username.length === 0 || this.password.length === 0) {
             this.setState({
@@ -86,11 +86,17 @@ class Sign extends React.Component {
                 });
             }
         }).catch(err => {
-            this.setState({
-                error: true,
-                message: err.message,
-                data: null,
-            });
+            if (err.response.data.message !== undefined) {
+                this.setState({
+                    error: true,
+                    message: err.response.data.message,
+                });
+            } else {
+                this.setState({
+                    error: true,
+                    message: err.message,
+                });
+            }
         }).finally(() => {
             this.setState({ loading: false });
         });

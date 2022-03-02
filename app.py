@@ -18,7 +18,7 @@ def hello():
     return 'Sign your identity!'
 
 
-@app.route('/sign', methods=['POST'])
+@app.route('/api/sign', methods=['POST'])
 def sign():
     username = request.form['username']
     password = request.form['password']
@@ -29,7 +29,6 @@ def sign():
     if comment == '':
         comment = '无可奉告'
 
-    print(username, password, comment, options)
     user_data = sso.get_user_info(username, password)
     if user_data is None:
         return jsonify({
@@ -83,7 +82,7 @@ def sign():
     return jsonify({'status': 'ok', 'sign': base85_sign})
 
 
-@app.route('/verify', methods=['POST'])
+@app.route('/api/verify', methods=['POST'])
 def verify():
     sign = request.form['sign']
     if sign == '':
