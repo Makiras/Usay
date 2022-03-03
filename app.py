@@ -33,7 +33,12 @@ def sign():
     if user_data is None:
         return jsonify({
             'status': 'error',
-            'message': "用户名或密码可能错了, 也可能是用的人太多, 总之这次登录失败了"
+            'message': "用户名或密码可能错了，或其他原因。"
+        }), 500
+    elif user_data is False:
+        return jsonify({
+            'status': 'error',
+            'message': "网络错误，可能用的人多了，请稍后再试。"
         }), 500
     sign_data = {}
 
